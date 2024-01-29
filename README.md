@@ -32,9 +32,7 @@ yarn build
 
 This should create the following containers:
 ✔ Container redis (cache)
-✔ Container unstructured (handle images, ppt, text, markdown)
 ✔ Container opensearch (search engine)
-✔ Container opensearch-dashboards  (search engine dashboard)
 
 OpenSearch dashboard can be accessed at http://localhost:5601
 
