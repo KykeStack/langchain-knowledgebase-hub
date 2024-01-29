@@ -1,0 +1,39 @@
+{
+  "name": "langchain-knowledgebase-browser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "build": "docker-compose up -d --build && yarn start",
+    "start": "yarn install && node --no-warnings app.js",
+    "test": "vitest"
+  },
+  "author": "KikeStack | @KykeStack",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/community": "^0.0.16",
+    "@langchain/openai": "^0.0.11",
+    "@opensearch-project/opensearch": "^2.5.0",
+    "@zilliz/milvus2-sdk-node": "^2.2.6",
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "html-to-text": "^9.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.1.2",
+    "openai": "^3.2.1",
+    "pdf-parse": "^1.1.1",
+    "playwright": "^1.40.1",
+    "redis": "^4.6.5",
+    "sitemap-xml-parser": "^0.0.2",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^1.2.0"
+  }
+}
