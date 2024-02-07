@@ -104,7 +104,7 @@ async function deleteFile(filepath) {
     if (err) {
       console.error(err);
     } else {
-      console.log('File is deleted.');
+      console.info('File is deleted.');
     }
   });
 }
@@ -153,7 +153,6 @@ async function addURL(url, encodedCollection, chunkSize, chunkOverlap) {
   });
 
   vectorStore = null
-  console.log('✔ Added!')
   return true
 }
 

@@ -59,7 +59,7 @@ const addDocumentsToCollection = async (documents, collection, callback) => {
   });
 
   vectorStore = null; // Assuming this is intended to be nullified.
-  console.log('Added!');
+  console.info('Added!');
 };
 
 
@@ -71,7 +71,7 @@ async function addURL(url, collection, chunkSize = 500, chunkOverlap = 200) {
   const documents = await splitAndCleanDocuments(docs, chunkSize, chunkOverlap)
 
   if (documents.length === 0) return false
-  console.log(documents)
+
   await addDocumentsToCollection(documents, collection, (document) => {
     delete document.metadata.loc
   })
@@ -104,7 +104,7 @@ export const ifCollectionExist = async (encodedCollection) => {
 
     return vectorStore
   } catch (err) {
-    console.log(err)
+    console.error(err)
     vectorStore = null
     res.status(500).json({ message: 'Error processing the request' })
     return null

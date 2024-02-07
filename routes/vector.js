@@ -65,7 +65,6 @@ router.post('/add', async (req, res) => {
 
   const encodedCollection = await sanitize(collection);
   const type = await getFileType(url);
-  console.log(type)
   switch (type) {
     case 'URL':
       await handleUrlOrHtml(
@@ -148,7 +147,6 @@ router.post('/question', async (req, res) => {
   }
 
   try {
-    console.log('Using Vector Store')
     const llm = new ChatOpenAI({
       modelName: model,
       concurrency: 15,
@@ -187,7 +185,7 @@ router.post('/question', async (req, res) => {
     sources = sources.map((sources) => sources.metadata.source)
     // Remove duplicates
     sources = [...new Set(sources)]
-    console.log('Sources:', sources)
+    console.info('Sources:', sources)
     vectorStore = null
     // Return the response to the user
     res.json({ response: response.answer, sources })

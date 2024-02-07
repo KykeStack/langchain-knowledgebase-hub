@@ -16,5 +16,5 @@ clientRedis.on('error', (err) => {
 })
 
 clientRedis.on('ready', () => {
-  console.log('Connected to Redis server.')
+  console.info('Connected to Redis server.')
 })

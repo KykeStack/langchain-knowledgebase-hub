@@ -10,7 +10,7 @@ router.get('/clearcache', async (req, res) => {
       if (err) {
         console.error('Error flushing database:', err)
       } else {
-        console.log('Database flushed:', result)
+        console.info('Database flushed:', result)
       }
     })
 
