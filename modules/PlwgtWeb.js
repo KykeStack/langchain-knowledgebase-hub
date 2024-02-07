@@ -1,8 +1,6 @@
 import { Document } from "@langchain/core/documents";
 import { BaseDocumentLoader } from "langchain/document_loaders/base";
 
-const RESOURCE_EXCLUSTIONS = ["image", "stylesheet", "media", "font","other", "xhr", "fetch", "websocket", "eventsource"]
-
 /**
  * Class representing a document loader for scraping web pages using
  * Playwright. Extends the BaseDocumentLoader class and implements the
@@ -26,6 +24,7 @@ export class PlaywrightWebBaseLoader extends BaseDocumentLoader {
         this.options = options ?? undefined;
     }
     static async _scrape(url, options) {
+        const RESOURCE_EXCLUSIONS = ["image", "stylesheet", "media", "font","other", "xhr", "fetch", "websocket", "eventsource"] || options?.exclusions
         const { chromium } = await PlaywrightWebBaseLoader.imports();
         const browser = await chromium.launch({
             headless: false,
@@ -33,7 +32,7 @@ export class PlaywrightWebBaseLoader extends BaseDocumentLoader {
         });
         const page = await browser.newPage();
         await page.route('**/*', (route) => {
-            return RESOURCE_EXCLUSTIONS.includes(route.request().resourceType())
+            return RESOURCE_EXCLUSIONS.includes(route.request().resourceType())
                 ? route.abort()
                 : route.continue()
         });
